@@ -159,7 +159,7 @@ def main():
         print(Fore.BLUE + "║                BY- REN9999 TT- sistem9999         ║")      
         print(Fore.BLUE + "╚═══════════════════════════════════════════════════╝")
 
-        print(Fore.GREEN + "1. Lakukan DDOS")
+        print(Fore.GREEN + "1.langsung gas ken DDOS")
         print(Fore.CYAN + "2. Cek status website")
         print(Fore.MAGENTA + "3. Keluar")
 
@@ -174,10 +174,9 @@ def main():
                 print(Fore.RED + "Input tidak valid. Pastikan memasukkan angka!")
                 input("Tekan Enter untuk kembali ke menu.")
         elif pilihan == '2':
-            url = input(Fore.YELLOW + "Masukkan URL website (dengan http/https): ")
-            cek_status_dan_fitur_lengkap(url)
-            input(Fore.WHITE + "\nTekan Enter untuk kembali ke menu.")
-            time.sleep(3)
+    cek_status_dan_fitur_lengkap()  # Tidak perlu memasukkan URL karena sudah diminta di dalam fungsi
+    input(Fore.WHITE + "\nTekan Enter untuk kembali ke menu.")
+    time.sleep(3)
         elif pilihan == '3':
             print(Fore.CYAN + "Keluar dari program. Sampai jumpa!")
             break
