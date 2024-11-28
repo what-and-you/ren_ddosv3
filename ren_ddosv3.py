@@ -173,9 +173,9 @@ def main():
                 print(Fore.RED + "Input tidak valid. Pastikan memasukkan angka!")
                 input("Tekan Enter untuk kembali ke menu.")
         elif pilihan == '2':
-    url = input(Fore.YELLOW + "Masukkan URL website (dengan http/https): ")
-    cek_status_dan_fitur_lengkap(url)
-    input(Fore.WHITE + "\nTekan Enter untuk kembali ke menu.")
+            url = input(Fore.YELLOW + "Masukkan URL website (dengan http/https): ")
+            cek_status_dan_fitur_lengkap(url)
+            input(Fore.WHITE + "\nTekan Enter untuk kembali ke menu.")
         elif pilihan == '3':
             print(Fore.CYAN + "Keluar dari program. Sampai jumpa!")
             break
