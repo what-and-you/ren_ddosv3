@@ -94,8 +94,10 @@ def main():
             response = cek_status_website(url)
             if response:
                 print(Fore.GREEN + f"Website {url} aktif dengan status {response.status_code}")
+                input(" ")
             else:
                 print(Fore.RED + f"Website {url} tidak dapat diakses.")
+                input(" ")
         elif pilihan == '3':
             print(Fore.CYAN + "Keluar dari program. Sampai jumpa!")
             break
