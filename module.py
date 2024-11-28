@@ -3,6 +3,7 @@
 import requests
 import dns.resolver
 
+# Fungsi untuk memeriksa status website
 def cek_status_website(url):
     try:
         response = requests.get(url, timeout=10)
@@ -11,6 +12,7 @@ def cek_status_website(url):
         print(f"Error saat mengakses {url}: {e}")
         return None
 
+# Fungsi untuk memeriksa SSL/TLS pada website
 def cek_ssl_website(url):
     try:
         if url.startswith("https"):
@@ -21,6 +23,7 @@ def cek_ssl_website(url):
         print(f"Error saat mengecek SSL: {e}")
         return None
 
+# Fungsi untuk memeriksa DNS record dari sebuah domain
 def cek_dns(url):
     try:
         domain = url.replace("http://", "").replace("https://", "").split("/")[0]
@@ -30,6 +33,7 @@ def cek_dns(url):
         print(f"Error saat mengecek DNS: {e}")
         return None
 
+# Fungsi untuk memeriksa apakah website menggunakan HSTS
 def cek_hsts(response):
     try:
         return response.headers.get("Strict-Transport-Security", None)
@@ -37,6 +41,7 @@ def cek_hsts(response):
         print(f"Error saat mengecek HSTS: {e}")
         return None
 
+# Fungsi untuk memeriksa CORS (Cross-Origin Resource Sharing)
 def cek_cors(response):
     try:
         return response.headers.get("Access-Control-Allow-Origin", None)
