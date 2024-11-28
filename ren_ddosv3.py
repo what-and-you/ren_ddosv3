@@ -147,7 +147,7 @@ def cek_status_dan_fitur_lengkap(url):
 
     except Exception as e:
         print(Fore.RED + f"Terjadi error saat pengecekan: {e}")
-        
+
 # Menu utama
 def main():
     while True:
@@ -159,7 +159,7 @@ def main():
         print(Fore.BLUE + "║                BY- REN9999 TT- sistem9999         ║")      
         print(Fore.BLUE + "╚═══════════════════════════════════════════════════╝")
 
-        print(Fore.GREEN + "1.langsung gas ken DDOS")
+        print(Fore.GREEN + "1. Langsung gas ken DDOS")
         print(Fore.CYAN + "2. Cek status website")
         print(Fore.MAGENTA + "3. Keluar")
 
@@ -174,10 +174,10 @@ def main():
                 print(Fore.RED + "Input tidak valid. Pastikan memasukkan angka!")
                 input("Tekan Enter untuk kembali ke menu.")
         elif pilihan == '2':
-    url = input(Fore.YELLOW + "Masukkan URL website (dengan http/https): ")
-    cek_status_dan_fitur_lengkap(url)  # Memanggil fungsi cek_status_dan_fitur_lengkap
-    input(Fore.WHITE + "\nTekan Enter untuk kembali ke menu.")
-    time.sleep(3)
+            url = input(Fore.YELLOW + "Masukkan URL website (dengan http/https): ")
+            cek_status_dan_fitur_lengkap(url)  # Memanggil fungsi cek_status_dan_fitur_lengkap
+            input(Fore.WHITE + "\nTekan Enter untuk kembali ke menu.")
+            time.sleep(3)
         elif pilihan == '3':
             print(Fore.CYAN + "Keluar dari program. Sampai jumpa!")
             break
