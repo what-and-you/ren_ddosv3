@@ -155,7 +155,8 @@ def main():
         tampilkan_logo()
 
         print(Fore.YELLOW + "╔═══════════════════════════════════════════════════╗")
-        print(Fore.YELLOW + "║                DDOS Tool - Premium Version        ║")
+        print(Fore.YELLOW + "║                DDOS Tool - Premium Version       ║") 
+        print(Fore.YELLOW + "║                BY- REN9999 TT- sistem9999        ║")      
         print(Fore.YELLOW + "╚═══════════════════════════════════════════════════╝")
 
         print(Fore.GREEN + "1. Lakukan DDOS")
@@ -176,6 +177,7 @@ def main():
             url = input(Fore.YELLOW + "Masukkan URL website (dengan http/https): ")
             cek_status_dan_fitur_lengkap(url)
             input(Fore.WHITE + "\nTekan Enter untuk kembali ke menu.")
+            time.sleep(3)
         elif pilihan == '3':
             print(Fore.CYAN + "Keluar dari program. Sampai jumpa!")
             break
