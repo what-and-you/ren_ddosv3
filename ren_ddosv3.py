@@ -75,31 +75,79 @@ def kirim_ddos(url, jumlah_ddos, ukuran_damage):
 
     print(Fore.CYAN + f"\nTotal DDOS berhasil: {sukses_count} dari {jumlah_ddos}")
 
-# Fungsi untuk mengecek status website dengan modul tambahan
-def cek_status_dan_fitur(url):
+# Fungsi untuk mengecek status website dengan lebih banyak pengecekan
+def cek_status_dan_fitur_lengkap(url):
     try:
-        print(Fore.YELLOW + "Mengecek status website...")
+        print(Fore.YELLOW + "\n[1] Mengecek Status HTTP...")
         response = cek_status_website(url)
         if response:
             print(Fore.GREEN + f"Website {url} aktif! (Status Code: {response.status_code})")
         else:
             print(Fore.RED + f"Website {url} tidak dapat diakses.")
 
-        print(Fore.YELLOW + "\nMengecek SSL...")
+        print(Fore.YELLOW + "\n[2] Mengecek SSL/TLS...")
         cek_ssl_website(url)
 
-        print(Fore.YELLOW + "\nMengecek DNS...")
+        print(Fore.YELLOW + "\n[3] Mengecek DNS Records...")
         cek_dns(url)
 
-        print(Fore.YELLOW + "\nMengecek HSTS...")
+        print(Fore.YELLOW + "\n[4] Mengecek HSTS...")
         cek_hsts(url)
 
-        print(Fore.YELLOW + "\nMengecek CORS...")
+        print(Fore.YELLOW + "\n[5] Mengecek CORS...")
         cek_cors(url)
+
+        print(Fore.YELLOW + "\n[6] Mengecek Page Load Time...")
+        try:
+            start_time = time.time()
+            requests.get(url, timeout=10)
+            load_time = time.time() - start_time
+            print(Fore.GREEN + f"Page Load Time: {load_time:.2f} detik")
+        except Exception as e:
+            print(Fore.RED + f"Gagal mengecek Page Load Time: {e}")
+
+        print(Fore.YELLOW + "\n[7] Mengecek Redirects...")
+        try:
+            response = requests.get(url, allow_redirects=True, timeout=10)
+            if len(response.history) > 0:
+                print(Fore.GREEN + f"Website mengalami {len(response.history)} pengalihan.")
+                for i, redirect in enumerate(response.history, 1):
+                    print(Fore.CYAN + f"  Redirect {i}: {redirect.url}")
+            else:
+                print(Fore.GREEN + "Tidak ada pengalihan URL.")
+        except Exception as e:
+            print(Fore.RED + f"Gagal mengecek Redirects: {e}")
+
+        print(Fore.YELLOW + "\n[8] Mengecek Content Security Policy (CSP)...")
+        try:
+            response = requests.get(url, timeout=10)
+            csp = response.headers.get("Content-Security-Policy", "Tidak diatur")
+            print(Fore.GREEN + f"CSP: {csp}")
+        except Exception as e:
+            print(Fore.RED + f"Gagal mengecek CSP: {e}")
+
+        print(Fore.YELLOW + "\n[9] Mengecek Server Headers...")
+        try:
+            response = requests.get(url, timeout=10)
+            server_header = response.headers.get("Server", "Tidak diatur")
+            print(Fore.GREEN + f"Server Header: {server_header}")
+        except Exception as e:
+            print(Fore.RED + f"Gagal mengecek Server Headers: {e}")
+
+        print(Fore.YELLOW + "\n[10] Mengecek robots.txt...")
+        try:
+            robots_url = url.rstrip("/") + "/robots.txt"
+            response = requests.get(robots_url, timeout=10)
+            if response.status_code == 200:
+                print(Fore.GREEN + f"robots.txt ditemukan:\n{response.text}")
+            else:
+                print(Fore.RED + "robots.txt tidak ditemukan.")
+        except Exception as e:
+            print(Fore.RED + f"Gagal mengecek robots.txt: {e}")
 
     except Exception as e:
         print(Fore.RED + f"Terjadi error saat pengecekan: {e}")
-
+        
 # Menu utama
 def main():
     while True:
@@ -125,9 +173,9 @@ def main():
                 print(Fore.RED + "Input tidak valid. Pastikan memasukkan angka!")
                 input("Tekan Enter untuk kembali ke menu.")
         elif pilihan == '2':
-            url = input(Fore.YELLOW + "Masukkan URL website (dengan http/https): ")
-            cek_status_dan_fitur(url)
-            input(Fore.WHITE + "\nTekan Enter untuk kembali ke menu.")
+    url = input(Fore.YELLOW + "Masukkan URL website (dengan http/https): ")
+    cek_status_dan_fitur_lengkap(url)
+    input(Fore.WHITE + "\nTekan Enter untuk kembali ke menu.")
         elif pilihan == '3':
             print(Fore.CYAN + "Keluar dari program. Sampai jumpa!")
             break
