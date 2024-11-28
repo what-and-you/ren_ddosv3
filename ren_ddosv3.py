@@ -12,7 +12,7 @@ import ssl
 import socket
 import dns.resolver
 from colorama import Fore
-from module.py import cek_status_website, cek_ssl_website, cek_dns, cek_hsts, cek_cors
+from module import cek_status_website, cek_ssl_website, cek_dns, cek_hsts, cek_cors
 
 # Fungsi untuk memeriksa status HTTP website
 def cek_status_website(url):
