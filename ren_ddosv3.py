@@ -154,10 +154,10 @@ def main():
         bersihkan_layar()
         tampilkan_logo()
 
-        print(Fore.YELLOW + "╔═══════════════════════════════════════════════════╗")
-        print(Fore.YELLOW + "║                DDOS Tool - Premium Version       ║") 
-        print(Fore.YELLOW + "║                BY- REN9999 TT- sistem9999        ║")      
-        print(Fore.YELLOW + "╚═══════════════════════════════════════════════════╝")
+        print(Fore.BLUE + "╔═══════════════════════════════════════════════════╗")
+        print(Fore.BLUE + "║                DDOS Tool - Premium Version        ║") 
+        print(Fore.BLUE + "║                BY- REN9999 TT- sistem9999         ║")      
+        print(Fore.BLUE + "╚═══════════════════════════════════════════════════╝")
 
         print(Fore.GREEN + "1. Lakukan DDOS")
         print(Fore.CYAN + "2. Cek status website")
